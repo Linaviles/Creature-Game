@@ -1,8 +1,15 @@
 // button functions
 let message = "<p> </p>" + "<br></br>";
 
-$("#start").click(function () {
+// Get the start button, starting-screen, and front-shop ID elements
+var frontShop = document.getElementById("front-shop");
+var start = document.getElementById("start");
+var startingScreen = document.getElementById("starting-screen");
 
+// Get starting screen off and front screen in
+$("#start").click(function () {
+  startingScreen.style.display = "none";
+  frontShop.style.display = "block";
 });
 
 // Get the modal
