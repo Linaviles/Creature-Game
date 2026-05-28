@@ -10,6 +10,10 @@ var startingScreen = document.getElementById("starting-screen");
 $("#start").click(function () {
   startingScreen.style.display = "none";
   frontShop.style.display = "block";
+
+  bgMusic.play().catch(function(error) {
+    console.log("Audio failed:", error);
+  });
 });
 
 // Get the modal
@@ -17,6 +21,9 @@ var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
 var credits = document.getElementById("credits");
+
+// Get the audio element to play
+var bgMusic = document.getElementById("bg-music");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];

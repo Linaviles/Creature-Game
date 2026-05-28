@@ -9,12 +9,12 @@ html, body {
     background-image: url(art/menu_screen.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    width: 100%;
+    width: 80%;
     height: 100%;
     
 }
 
-#front-shop {
+#front-shop { 
     display: none;
     position: relative;
     background-image: url(art/test.jpeg);
