@@ -28,12 +28,26 @@ html, body {
     height: 100%;
 }
 
+.lineContainer {
+    display: flex;
+}
+
+#lineCreature {
+    z-index: 3;
+    top: 20px;
+    position: relative;
+}
+
+.line {
+    margin-right: 50px;
+}
+
 /* top section */
 .title {
     max-width: 700px;
     gap: 30px;
     text-align: center;
-    padding: 5px;
+    padding: 30px;
     border-radius: 100px;
     background-color: orange;
 }

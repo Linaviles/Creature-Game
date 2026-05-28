@@ -14,7 +14,54 @@ $("#start").click(function () {
   bgMusic.play().catch(function(error) {
     console.log("Audio failed:", error);
   });
+
+// Line of creatures starts to form
+  var lineImage = setInterval(function () {
+    makeImage("platypus");
+    makeImage("jackalope");
+    makeImage("pegasus");
+    makeImage("poodle");
+    makeImage("snake");
+    if (lineCount === maxLineCount) {
+      clearInterval(lineImage)
+    }
+  }, 7000);
+
 });
+
+// list of line variables
+let creatures = ["platypus", "jackalope", "pegasus", "poodle", "snake"];
+
+let creatureCount = 0;
+
+let lineNumber = Math.floor(Math.random() * creatures.length);
+
+let lineCreature = creatures[lineNumber];
+
+let lineCount = 0;
+
+let maxLineCount = 8;
+
+// random creature is called on
+var counter = setInterval(function () {
+  lineNumber = (Math.floor(Math.random() * creatures.length))
+  lineCreature = creatures[lineNumber];
+  lineCount = lineCount + 1;
+  if (lineCount === maxLineCount) {
+    clearInterval(counter)
+  }
+}, 7000);
+
+console.log(lineNumber);
+console.log(lineCreature);
+
+// prepends creature to line on screen
+function makeImage(creatureToMatch) {
+  // what the function actually does
+  if (lineCreature == creatureToMatch) {
+    $("#lineCreature").prepend("<img class = 'line' width=125 src='" + "art/" + creatureToMatch + ".png'>");
+  }
+}
 
 // Get the modal
 var modal = document.getElementById("myModal");
