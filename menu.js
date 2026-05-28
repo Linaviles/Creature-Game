@@ -12,12 +12,10 @@ let lineCreature = creatures[lineNumber];
 
 let lineCount = 0;
 
-let maxLineCount = 8;
-
 //Dictionary to make sure creatures are saved properly
 let slotCreatures = {};
 //counter for make Image function
-let i =1;
+let i = 1;
 
 //Dictionary to store creatures and services they need? (thinking about this)
 let all_service = {};
@@ -36,6 +34,16 @@ $("#start").click(function () {
     console.log("Audio failed:", error);
   });
 
+  // random creature is called on
+  var counter = setInterval(function () {
+    lineNumber = (Math.floor(Math.random() * creatures.length))
+    lineCreature = creatures[lineNumber];
+    lineCount = lineCount + 1;
+    if (lineCount == 8) {
+      clearInterval(counter)
+    }
+  }, 7000);
+
   // Line of creatures starts to form
   var lineImage = setInterval(function () {
     makeImage("platypus");
@@ -43,22 +51,13 @@ $("#start").click(function () {
     makeImage("pegasus");
     makeImage("poodle");
     makeImage("snake");
-    if (lineCount === maxLineCount) {
+    console.log(lineCreature);
+    if (lineCount == 8) {
       clearInterval(lineImage)
     }
   }, 7000);
 
 });
-
-// random creature is called on
-var counter = setInterval(function () {
-  lineNumber = (Math.floor(Math.random() * creatures.length))
-  lineCreature = creatures[lineNumber];
-  lineCount = lineCount + 1;
-  if (lineCount === maxLineCount) {
-    clearInterval(counter)
-  }
-}, 7000);
 
 console.log(lineNumber);
 console.log(lineCreature);
@@ -80,13 +79,14 @@ function makeImage(creatureToMatch) {
 function random_service() {
   let groomingService = [" hair cut ", " nail trim ", " nail buff ", " wash ", " brush teeth ", " brush hair "];
   let randS = Math.floor(Math.random() * groomingService.length);
-  return randomService = groomingService[randS]; 
+  return randomService = groomingService[randS];
 }
 
 //Hover functions (need to find way to make this code shorter more efficient :/ )
 let service01 = random_service();
 $("#lineCreature01").hover(
-    function () { $("#service-box").text((slotCreatures["01"] || lineCreature) + " wants a " + service01 + " service."); //checks if creature is the right one being hovered
+  function () {
+    $("#service-box").text((slotCreatures["01"] || lineCreature) + " wants a " + service01 + " service."); //checks if creature is the right one being hovered
   },
   function () {
     $("#service-box").text("Let's see what the client wants.");
@@ -94,7 +94,7 @@ $("#lineCreature01").hover(
 let service02 = random_service();
 $("#lineCreature02").hover(
   function () {
-    $("#service-box").text((slotCreatures["02"] || lineCreature) + " wants a " + service02 + " service."); 
+    $("#service-box").text((slotCreatures["02"] || lineCreature) + " wants a " + service02 + " service.");
   },
   function () {
     $("#service-box").text("Let's see what the client wants.");
@@ -188,8 +188,7 @@ window.onclick = function (event) {
 
 //Shop grooming screen initiation
 var groomShop = document.getElementById("grooming-shop");
-$("#lineCreature01").click(function(){
-    frontShop.style.display = "none";
-    groomShop.style.display = "block";
-  });
-  
+$("#lineCreature01").click(function () {
+  frontShop.style.display = "none";
+  groomShop.style.display = "block";
+});

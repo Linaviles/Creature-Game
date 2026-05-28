@@ -41,6 +41,8 @@ body {
 
 .lineContainer {
     display: flex;
+    padding-top: 300px;
+    padding-left: 25px;
 }
 
 #lineCreature {
@@ -50,7 +52,7 @@ body {
 }
 
 .line {
-    margin-right: 50px;
+    margin-right: 25px;
 }
 
 /* top section */
@@ -162,4 +164,5 @@ h1 {
     padding-top: 50px;
     width: 400px;
     height: 100px;
+    text-shadow: 2px 2px #ffffff;
 }
