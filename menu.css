@@ -1,8 +1,9 @@
 /* backgrounds */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 #starting-screen {
@@ -15,13 +16,23 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
 
-#front-shop { 
+#front-shop {
     display: none;
     position: relative;
-    background-image: url(art/test.jpeg);
+    background-image: url(art/store_front.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#grooming-shop {
+    display: none;
+    position: relative;
+    background-image: url(art/test2.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
@@ -80,10 +91,10 @@ html, body {
     color: white
 }
 
-.divider{
-    width:40px;
-    height:auto;
-    display:inline-block;
+.divider {
+    width: 40px;
+    height: auto;
+    display: inline-block;
 }
 
 h1 {
@@ -137,4 +148,18 @@ h1 {
     color: white;
     text-decoration: none;
     cursor: pointer;
+}
+
+#service-box {
+    position: absolute;
+    top: 75%;
+    left: 35%;
+    background-image: url(art/placeholder.jpeg);
+    border-width: 10px;
+    border-color: cadetblue;
+    font-size: xx-large;
+    padding-left: 50px;
+    padding-top: 50px;
+    width: 400px;
+    height: 100px;
 }
