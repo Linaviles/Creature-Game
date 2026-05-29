@@ -1,7 +1,88 @@
- <h1>Hello Team!</h1>
- <h2>this is a test</h2>
- 
- 
+<!doctype html>
 
+<html lang="en">
 
+<head>
 
+    <meta charset="utf-8">
+
+    <title> CREATURE SALON </title>
+
+    <link rel="stylesheet" href="menu.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="menu.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alata&family=Chiron+GoRound+TC:wght@200..900&family=Emilys+Candy&family=Freckle+Face&family=Kablammo&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="starting-screen" class="game-screen">
+        <div class="title">
+
+            <h1> CREATURE SALON </h1>
+
+        </div>
+
+        <div class="buttons">
+
+            <button id="start"> START </button>
+
+            <div class="divider"> </div>
+
+            <button id="credits"> CREDITS </button>
+
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p> This project was created by: </p>
+                <p> Lindsay Aviles </p>
+                <p> Darwin Chang </p>
+                <p> Cesar Marcial </p>
+                <p> Jacobi Raisner </p>
+                <p> Osaze Sowelle </p>
+                <p> Ella Ty </p>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="front-shop" class="game-screen">
+
+        <div class=lineContainer>
+
+            <div id="lineCreature01"></div>
+            <div id="lineCreature02"></div>
+            <div id="lineCreature03"></div>
+            <div id="lineCreature04"></div>
+            <div id="lineCreature05"></div>
+            <div id="lineCreature06"></div>
+            <div id="lineCreature07" ></div>
+            <div id="lineCreature08"></div>
+
+            
+    
+        </div>
+            <div id="service-box"></div>
+        </div>
+
+        <div id="grooming-shop"></div>
+
+        <!-- // music which loops when pressesing start in game // -->
+        <audio id="bg-music" loop>
+            <source src="music/Game-Theme-1.mp3" type="audio/mpeg">
+        </audio>
+
+</body>
