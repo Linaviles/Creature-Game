@@ -194,6 +194,4 @@ $("#lineCreature01").click(function () {
   var content = $('#lineCreature01').html();
   var content2 = $('#groomCreature').html();
   $('#groomCreature').replaceWith(content);
-  var element = document.getElementById("#lineCreature01");
-  element.classList.toggle("groom");
 });
