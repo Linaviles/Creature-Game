@@ -42,7 +42,7 @@ $("#start").click(function () {
     if (lineCount == 8) {
       clearInterval(counter)
     }
-  }, 7000);
+  }, 1000);
 
   // Line of creatures starts to form
   var lineImage = setInterval(function () {
@@ -55,7 +55,7 @@ $("#start").click(function () {
     if (lineCount == 8) {
       clearInterval(lineImage)
     }
-  }, 7000);
+  }, 1000);
 
 });
 
@@ -69,7 +69,7 @@ function makeImage(creatureToMatch) {
     let slot = i < 9 ? "0" + i : "" + i; // if slot less than 8 then add 0i (index) else don't add i helps with coutning and storing values
     slotCreatures[slot] = creatureToMatch; // adds crearure to dictionary in the randomized order that they came in
     $("#lineCreature" + slot).prepend(
-      "<img class='line' width=150 src='art/" + creatureToMatch + ".png'>"
+      "<img class='line' src='art/" + creatureToMatch + ".png'>"
     );
     i++;
   }
@@ -191,4 +191,9 @@ var groomShop = document.getElementById("grooming-shop");
 $("#lineCreature01").click(function () {
   frontShop.style.display = "none";
   groomShop.style.display = "block";
+  var content = $('#lineCreature01').html();
+  var content2 = $('#groomCreature').html();
+  $('#groomCreature').replaceWith(content);
+  var element = document.getElementById("#lineCreature01");
+  element.classList.toggle("groom");
 });

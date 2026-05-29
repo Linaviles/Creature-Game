@@ -53,6 +53,7 @@ body {
 
 .line {
     margin-right: 25px;
+    width: 150px;
 }
 
 /* top section */
@@ -165,4 +166,9 @@ h1 {
     width: 400px;
     height: 100px;
     text-shadow: 2px 2px #ffffff;
+}
+
+.groom {
+    max-width: 300px;
+    margin-top: 200px;
 }
