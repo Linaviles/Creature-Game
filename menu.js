@@ -23,12 +23,12 @@ var frontShop = document.getElementById("front-shop");
 var start = document.getElementById("start");
 var startingScreen = document.getElementById("starting-screen");
 
-// AUDIO (ONLY WHAT YOU NEED)
+// audio stuff
 var bgMusic = document.getElementById("bg-music");
 var startSound = document.getElementById("start-sound");
 
 
-// START BUTTON
+// once you press start it plays theme song
 $("#start").click(function () {
 
   // play click sound
@@ -42,7 +42,7 @@ $("#start").click(function () {
   startingScreen.style.display = "none";
   frontShop.style.display = "block";
 
-  // ▶️ BACKGROUND MUSIC (RESTORED)
+  // background MUSIC (fixed?)
   if (bgMusic) {
     bgMusic.currentTime = 0;
     bgMusic.play().catch(function (error) {
@@ -83,7 +83,7 @@ console.log(lineNumber);
 console.log(lineCreature);
 
 
-// MAKE IMAGE
+// create the image
 function makeImage(creatureToMatch) {
 
   if (lineCreature === creatureToMatch) {
@@ -100,7 +100,7 @@ function makeImage(creatureToMatch) {
 }
 
 
-// RANDOM SERVICE
+// random service
 function random_service() {
   let groomingService = [" hair cut ", " nail trim ", " nail buff ", " wash ", " brush teeth ", " brush hair "];
   let randS = Math.floor(Math.random() * groomingService.length);
@@ -108,7 +108,7 @@ function random_service() {
 }
 
 
-// HOVER
+// hover functions
 let service01 = random_service();
 
 $("#lineCreature01").hover(
@@ -124,7 +124,7 @@ $("#lineCreature01").hover(
 );
 
 
-// MODAL
+// modal
 var modal = document.getElementById("myModal");
 var credits = document.getElementById("credits");
 var span = document.getElementsByClassName("close")[0];
@@ -152,7 +152,7 @@ window.onclick = function (event) {
 };
 
 
-// SHOP SCREEN
+// shop screen / groom shop
 var groomShop = document.getElementById("grooming-shop");
 
 $("#lineCreature01").click(function () {
