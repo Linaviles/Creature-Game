@@ -18,6 +18,12 @@ let i = 1;
 //Dictionary to store creatures and services they need? (thinking about this)
 let all_service = {};
 
+//services list
+let groomingService = [" hair cut ", " nail trim ", " nail buff ", " wash ", " brush teeth ", " brush hair "];
+
+//tools list
+let tools = ["hairBrush", "nailClippers", "nailFile", "shower", "toothbrush", "scissors"];
+
 // Get screen elements
 var frontShop = document.getElementById("front-shop");
 var start = document.getElementById("start");
@@ -78,6 +84,11 @@ $("#start").click(function () {
 
 });
 
+// random service
+function random_service() {
+  let randS = Math.floor(Math.random() * groomingService.length);
+  return groomingService[randS];
+}
 
 console.log(lineNumber);
 console.log(lineCreature);
@@ -95,34 +106,54 @@ function makeImage(creatureToMatch) {
       "<img class='line' src='art/" + creatureToMatch + ".png'>"
     );
 
+    all_service[creatureToMatch] = random_service();
     i++;
   }
 }
 
-
-// random service
-function random_service() {
-  let groomingService = [" hair cut ", " nail trim ", " nail buff ", " wash ", " brush teeth ", " brush hair "];
-  let randS = Math.floor(Math.random() * groomingService.length);
-  return groomingService[randS];
-}
-
-
 // hover functions
-let service01 = random_service();
-
 $("#lineCreature01").hover(
   function () {
+    let creature = slotCreatures["01"];
     $("#service-box").text(
-      (slotCreatures["01"] || lineCreature) +
-      " wants a " + service01 + " service."
-    );
-  },
-  function () {
-    $("#service-box").text("Let's see what the client wants.");
-  }
-);
+      creature +
+      " wants a " + all_service[creature] + " service."
+    );});
 
+$("#lineCreature02").hover(
+  function () {
+    let creature = slotCreatures["02"];
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+
+$("#lineCreature03").hover(
+  function () {
+    let creature = slotCreatures["03"];
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+
+$("#lineCreature04").hover(
+  function () {
+    let creature = slotCreatures["04"]
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+
+$("#lineCreature05").hover(
+  function () {
+    let creature = slotCreatures["05"];
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+
+$("#lineCreature06").hover(
+  function () {
+    let creature = slotCreatures["06"];
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+
+$("#lineCreature07").hover(
+  function () {
+    let creature = slotCreatures["07"];
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+
+$("#lineCreature08").hover(
+  function () {
+    let creature = slotCreatures["08"];
+    $("#service-box").text(creature + " wants a " + all_service[creature]+ " service.");});
 
 // modal
 var modal = document.getElementById("myModal");
@@ -151,14 +182,12 @@ window.onclick = function (event) {
   }
 };
 
-
 // shop screen / groom shop
 var groomShop = document.getElementById("grooming-shop");
 
 $("#lineCreature01").click(function () {
   frontShop.style.display = "none";
   groomShop.style.display = "block";
-
   var content = $('#lineCreature01').html();
   $('#groomCreature').replaceWith(content);
 });

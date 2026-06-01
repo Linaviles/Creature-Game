@@ -172,3 +172,34 @@ h1 {
     max-width: 300px;
     margin-top: 200px;
 }
+#groomCreature{
+    position: relative;
+}
+#tool-placements{
+    position: relative;
+    max-width: 200px;
+    display: flex;
+    background-color: beige;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 80%;
+    top: -100px;
+    
+
+}
+#tool-placements img {
+    position: relative;
+    width: 100px;
+}
+#health-bar{
+    position: relative;
+    display: flex;
+    gap: 20px;
+}
+
+#health-bar img {
+    position: relative;
+    width: 100px;
+    top:-100px;
+}
