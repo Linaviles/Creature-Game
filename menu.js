@@ -111,7 +111,7 @@ function makeImage(creatureToMatch) {
   }
 }
 
-// hover functions
+// hover functions (shows text on bottom of screen)
 $("#lineCreature01").hover(
   function () {
     let creature = slotCreatures["01"];
