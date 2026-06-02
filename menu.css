@@ -172,10 +172,21 @@ h1 {
     max-width: 300px;
     margin-top: 200px;
 }
-#groomCreature{
+
+#groomContainer {
     position: relative;
+    display: flex;
+    max-width: 300px;
+    margin-left: 35%;
+    top: 150px;
 }
-#tool-placements{
+
+#groomContainer img {
+    position: relative;
+    width: 400px;
+}
+
+#tool-placements {
     position: relative;
     max-width: 200px;
     display: flex;
@@ -184,20 +195,23 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-left: 80%;
-    top: -100px;
-    
+    top: -360px;
+
 
 }
+
 #tool-placements img {
     position: relative;
     width: 100px;
 }
-#health-bar{
+
+#health-bar {
     position: relative;
     display: flex;
+    max-width: 350px;
     gap: 20px;
     margin-left: 20px;
-    bottom: 150px
+    bottom: 450px;
 }
 
 #health-bar img {

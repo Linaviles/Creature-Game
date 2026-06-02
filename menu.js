@@ -118,42 +118,50 @@ $("#lineCreature01").hover(
     $("#service-box").text(
       creature +
       " wants a " + all_service[creature] + " service."
-    );});
+    );
+  });
 
 $("#lineCreature02").hover(
   function () {
     let creature = slotCreatures["02"];
-    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  });
 
 $("#lineCreature03").hover(
   function () {
     let creature = slotCreatures["03"];
-    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  });
 
 $("#lineCreature04").hover(
   function () {
     let creature = slotCreatures["04"]
-    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  });
 
 $("#lineCreature05").hover(
   function () {
     let creature = slotCreatures["05"];
-    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  });
 
 $("#lineCreature06").hover(
   function () {
     let creature = slotCreatures["06"];
-    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  });
 
 $("#lineCreature07").hover(
   function () {
     let creature = slotCreatures["07"];
-    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");});
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  });
 
 $("#lineCreature08").hover(
   function () {
     let creature = slotCreatures["08"];
-    $("#service-box").text(creature + " wants a " + all_service[creature]+ " service.");});
+    $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  });
 
 // modal
 var modal = document.getElementById("myModal");
@@ -163,7 +171,7 @@ var span = document.getElementsByClassName("close")[0];
 credits.onclick = function () {
   if (menuMusic) {
     menuMusic.currentTime = 0;
-    menuMusic.play().catch(function(error) {
+    menuMusic.play().catch(function (error) {
       console.log("Credits sound failed:", error);
     });
   }
@@ -173,7 +181,7 @@ credits.onclick = function () {
 
 span.onclick = function () {
   modal.style.display = "none";
-   if (menuMusic) {
+  if (menuMusic) {
     menuMusic.pause();
   }
 };
@@ -193,3 +201,17 @@ $("#lineCreature01").click(function () {
   var content = $('#lineCreature01').html();
   $('#groomCreature').replaceWith(content);
 });
+
+function dragstartHandler(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function dragoverHandler(ev) {
+  ev.preventDefault();
+}
+
+function dropHandler(ev) {
+  ev.preventDefault();
+  const data = ev.dataTransfer.getData("text");
+  // ev.target.appendChild(document.getElementById(data)); this line places the tool image inside the groomContainer div and removes the image from the tool box
+}

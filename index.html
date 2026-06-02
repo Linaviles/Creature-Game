@@ -63,14 +63,14 @@
 
         <div class=lineContainer>
 
-            <div id="lineCreature01"></div>
-            <div id="lineCreature02"></div>
-            <div id="lineCreature03"></div>
-            <div id="lineCreature04"></div>
-            <div id="lineCreature05"></div>
-            <div id="lineCreature06"></div>
-            <div id="lineCreature07"></div>
-            <div id="lineCreature08"></div>
+            <div class="line" id="lineCreature01"></div>
+            <div class="line" id="lineCreature02"></div>
+            <div class="line" id="lineCreature03"></div>
+            <div class="line" id="lineCreature04"></div>
+            <div class="line" id="lineCreature05"></div>
+            <div class="line" id="lineCreature06"></div>
+            <div class="line" id="lineCreature07"></div>
+            <div class="line" id="lineCreature08"></div>
 
         </div>
 
@@ -79,20 +79,22 @@
     </div>
 
     <div id="grooming-shop" class="game-screen">
-        <div id="groomCreature"></div>
+        <div id="groomContainer" ondrop="dropHandler(event)" ondragover="dragoverHandler(event)">
+            <div id="groomCreature"></div>
+        </div>
         <div id="tool-placements">
-            <img id="hairBrush" src="art/hairBrush.png">
-            <img id="toothBrush" src="art/toothBrush.png">
-            <img id="nailClippers" src="art/nailClippers.png">
-            <img id="nailFile" src="art/nailFile.png">
-            <img id="shower" src="art/shower.png">
-            <img id="scissors" src="art/scissors.png">
+            <img id="hairBrush" draggable="true" ondragstart="dragstartHandler(event)" src="art/hairBrush.png">
+            <img id="toothBrush" draggable="true" ondragstart="dragstartHandler(event)" src="art/toothBrush.png">
+            <img id="nailClippers" draggable="true" ondragstart="dragstartHandler(event)" src="art/nailClippers.png">
+            <img id="nailFile" draggable="true" ondragstart="dragstartHandler(event)" src="art/nailFile.png">
+            <img id="shower" draggable="true" ondragstart="dragstartHandler(event)" src="art/shower.png">
+            <img id="scissors" draggable="true" ondragstart="dragstartHandler(event)" src="art/scissors.png">
         </div>
 
         <div id="health-bar">
-            <img id="heart01" src="art/heart.png">
-            <img id="heart02" src="art/heart.png">
-            <img id="heart03" src="art/heart.png">
+            <img id="heart01" data-index="1" src="art/heart.png">
+            <img id="heart02" data-index="2" src="art/heart.png">
+            <img id="heart03" data-index="3" src="art/heart.png">
         </div>
     </div>
 
@@ -102,11 +104,11 @@
     </audio>
 
     <!-- sound that plays when you click "start"-->
-     <audio id="start-sound">
-    <source src="music/Click-Sound.mp3" type="audio/mpeg">
+    <audio id="start-sound">
+        <source src="music/Click-Sound.mp3" type="audio/mpeg">
     </audio>
-<!-- menu music soundtrack stuff -->
-<audio id="menu-music" loop>
-    <source src="music/Menu-Theme.mp3" type="audio/mpeg">
-</audio>
+    <!-- menu music soundtrack stuff -->
+    <audio id="menu-music" loop>
+        <source src="music/Menu-Theme.mp3" type="audio/mpeg">
+    </audio>
 </body>
