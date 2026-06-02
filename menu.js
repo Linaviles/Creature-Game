@@ -32,7 +32,7 @@ var startingScreen = document.getElementById("starting-screen");
 // audio stuff
 var bgMusic = document.getElementById("bg-music");
 var startSound = document.getElementById("start-sound");
-
+var menuMusic = document.getElementById("menu-music");
 
 // once you press start it plays theme song
 $("#start").click(function () {
@@ -65,7 +65,7 @@ $("#start").click(function () {
     if (lineCount == 8) {
       clearInterval(counter);
     }
-  }, 1000);
+  }, 5000);
 
   // Line of creatures starts to form
   var lineImage = setInterval(function () {
@@ -80,7 +80,7 @@ $("#start").click(function () {
     if (lineCount == 8) {
       clearInterval(lineImage);
     }
-  }, 1000);
+  }, 5000);
 
 });
 
@@ -161,10 +161,9 @@ var credits = document.getElementById("credits");
 var span = document.getElementsByClassName("close")[0];
 
 credits.onclick = function () {
-
-  if (startSound) {
-    startSound.currentTime = 0;
-    startSound.play().catch(function (error) {
+  if (menuMusic) {
+    menuMusic.currentTime = 0;
+    menuMusic.play().catch(function(error) {
       console.log("Credits sound failed:", error);
     });
   }
@@ -174,6 +173,9 @@ credits.onclick = function () {
 
 span.onclick = function () {
   modal.style.display = "none";
+   if (menuMusic) {
+    menuMusic.pause();
+  }
 };
 
 window.onclick = function (event) {
