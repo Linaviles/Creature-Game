@@ -202,16 +202,88 @@ $("#lineCreature01").click(function () {
   $('#groomCreature').replaceWith(content);
 });
 
-function dragstartHandler(ev) {
+function dragstart(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
 }
 
-function dragoverHandler(ev) {
+function dragover(ev) {
   ev.preventDefault();
 }
 
-function dropHandler(ev) {
+function drop(ev) {
   ev.preventDefault();
   const data = ev.dataTransfer.getData("text");
   // ev.target.appendChild(document.getElementById(data)); this line places the tool image inside the groomContainer div and removes the image from the tool box
 }
+
+hairBrush.addEventListener("dragstart", function (e) {
+
+   var hB = document.createElement('img');
+    hB.src = 'art/hairBrush.png';
+    hB.width = '100';
+    var div = document.createElement('div');
+    div.appendChild(hB);
+    document.querySelector('body').appendChild(div);
+    e.dataTransfer.setDragImage(div, -10, -10)
+
+}, false);
+
+toothBrush.addEventListener("dragstart", function (e) {
+
+   var tB = document.createElement('img');
+    tB.src = 'art/toothBrush.png';
+    tB.width = '100';
+    var div = document.createElement('div');
+    div.appendChild(tB);
+    document.querySelector('body').appendChild(div);
+    e.dataTransfer.setDragImage(div, -10, -10)
+
+}, false);
+
+nailClippers.addEventListener("dragstart", function (e) {
+
+   var nC = document.createElement('img');
+    nC.src = 'art/nailClippers.png';
+    nC.width = '100';
+    var div = document.createElement('div');
+    div.appendChild(nC);
+    document.querySelector('body').appendChild(div);
+    e.dataTransfer.setDragImage(div, -10, -10)
+
+}, false);
+
+nailFile.addEventListener("dragstart", function (e) {
+
+   var nF = document.createElement('img');
+    nF.src = 'art/nailFile.png';
+    nF.width = '100';
+    var div = document.createElement('div');
+    div.appendChild(nF);
+    document.querySelector('body').appendChild(div);
+    e.dataTransfer.setDragImage(div, -10, -10)
+
+}, false);
+
+shower.addEventListener("dragstart", function (e) {
+
+   var sH = document.createElement('img');
+    sH.src = 'art/shower.png';
+    sH.width = '100';
+    var div = document.createElement('div');
+    div.appendChild(sH);
+    document.querySelector('body').appendChild(div);
+    e.dataTransfer.setDragImage(div, -10, -10)
+
+}, false);
+
+scissors.addEventListener("dragstart", function (e) {
+
+   var sC = document.createElement('img');
+    sC.src = 'art/scissors.png';
+    sC.width = '100';
+    var div = document.createElement('div');
+    div.appendChild(sC);
+    document.querySelector('body').appendChild(div);
+    e.dataTransfer.setDragImage(div, -10, -10)
+
+}, false);
