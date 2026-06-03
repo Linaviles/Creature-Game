@@ -196,7 +196,7 @@ h1 {
     align-items: center;
     margin-left: 80%;
     top: -360px;
-
+    user-select: none;
 
 }
 
@@ -217,4 +217,16 @@ h1 {
 #health-bar img {
     position: relative;
     width: 100px;
+}
+
+.drag img{
+    pointer-events: none;
+}
+
+.drag {
+    user-select: none;
+}
+
+#hB {
+    background-color: #ffffff;
 }
