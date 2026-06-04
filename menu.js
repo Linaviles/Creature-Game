@@ -194,12 +194,13 @@ window.onclick = function (event) {
 
 // shop screen / groom shop
 var groomShop = document.getElementById("grooming-shop");
-
+let currentCreature = null;
 $("#lineCreature01").click(function () {
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature01').html();
   $('#groomCreature').replaceWith(content);
+  currentCreature = slotCreatures["01"];
 });
 
 function dragstart(ev) {
@@ -218,72 +219,133 @@ function drop(ev) {
 
 hairBrush.addEventListener("dragstart", function (e) {
 
-   var hB = document.createElement('img');
-    hB.src = 'art/hairBrush.png';
-    hB.width = '100';
-    var div = document.createElement('div');
-    div.appendChild(hB);
-    document.querySelector('body').appendChild(div);
-    e.dataTransfer.setDragImage(div, -10, -10)
+  var hB = document.createElement('img');
+  hB.src = 'art/hairBrush.png';
+  hB.width = '100';
+  var div = document.createElement('div');
+  div.appendChild(hB);
+  document.querySelector('body').appendChild(div);
+  e.dataTransfer.setDragImage(div, -10, -10)
 
 }, false);
 
 toothBrush.addEventListener("dragstart", function (e) {
 
-   var tB = document.createElement('img');
-    tB.src = 'art/toothBrush.png';
-    tB.width = '100';
-    var div = document.createElement('div');
-    div.appendChild(tB);
-    document.querySelector('body').appendChild(div);
-    e.dataTransfer.setDragImage(div, -10, -10)
+  var tB = document.createElement('img');
+  tB.src = 'art/toothBrush.png';
+  tB.width = '100';
+  var div = document.createElement('div');
+  div.appendChild(tB);
+  document.querySelector('body').appendChild(div);
+  e.dataTransfer.setDragImage(div, -10, -10)
 
 }, false);
 
 nailClippers.addEventListener("dragstart", function (e) {
 
-   var nC = document.createElement('img');
-    nC.src = 'art/nailClippers.png';
-    nC.width = '100';
-    var div = document.createElement('div');
-    div.appendChild(nC);
-    document.querySelector('body').appendChild(div);
-    e.dataTransfer.setDragImage(div, -10, -10)
+  var nC = document.createElement('img');
+  nC.src = 'art/nailClippers.png';
+  nC.width = '100';
+  var div = document.createElement('div');
+  div.appendChild(nC);
+  document.querySelector('body').appendChild(div);
+  e.dataTransfer.setDragImage(div, -10, -10)
 
 }, false);
 
 nailFile.addEventListener("dragstart", function (e) {
 
-   var nF = document.createElement('img');
-    nF.src = 'art/nailFile.png';
-    nF.width = '100';
-    var div = document.createElement('div');
-    div.appendChild(nF);
-    document.querySelector('body').appendChild(div);
-    e.dataTransfer.setDragImage(div, -10, -10)
+  var nF = document.createElement('img');
+  nF.src = 'art/nailFile.png';
+  nF.width = '100';
+  var div = document.createElement('div');
+  div.appendChild(nF);
+  document.querySelector('body').appendChild(div);
+  e.dataTransfer.setDragImage(div, -10, -10)
 
 }, false);
 
 shower.addEventListener("dragstart", function (e) {
 
-   var sH = document.createElement('img');
-    sH.src = 'art/shower.png';
-    sH.width = '100';
-    var div = document.createElement('div');
-    div.appendChild(sH);
-    document.querySelector('body').appendChild(div);
-    e.dataTransfer.setDragImage(div, -10, -10)
+  var sH = document.createElement('img');
+  sH.src = 'art/shower.png';
+  sH.width = '100';
+  var div = document.createElement('div');
+  div.appendChild(sH);
+  document.querySelector('body').appendChild(div);
+  e.dataTransfer.setDragImage(div, -10, -10)
 
 }, false);
 
 scissors.addEventListener("dragstart", function (e) {
 
-   var sC = document.createElement('img');
-    sC.src = 'art/scissors.png';
-    sC.width = '100';
-    var div = document.createElement('div');
-    div.appendChild(sC);
-    document.querySelector('body').appendChild(div);
-    e.dataTransfer.setDragImage(div, -10, -10)
+  var sC = document.createElement('img');
+  sC.src = 'art/scissors.png';
+  sC.width = '100';
+  var div = document.createElement('div');
+  div.appendChild(sC);
+  document.querySelector('body').appendChild(div);
+  e.dataTransfer.setDragImage(div, -10, -10)
 
 }, false);
+
+//Check if selected tool is the right tool
+function checkCorrectTool(tool) {
+  for (const [key, value] of Object.entries(all_service)) {
+    let clean_string = tool.replaceAll(' ', '');
+    let clean_string01 = value.replaceAll(' ', '');
+    if (currentCreature === key) {
+      return clean_string.toLowerCase() === clean_string01.toLowerCase();
+    }
+
+    return false;
+  }
+}
+
+//take damage if tool incorrect
+let lifeCounter = 0;
+var healthBar = document.getElementById("health-bar");
+var heart01 = document.getElementById("heart01");
+var heart02 = document.getElementById("heart02");
+var heart03 = document.getElementById("heart03");
+var skull01 = document.getElementById("skull01");
+var skull02 = document.getElementById("skull02");
+
+function takeDamage(check) {
+  if (checkCorrectTool(check)) {
+    //maybe a sound effect + visual effect can go here
+    happyClient();
+  }
+  else {
+    lifeCounter += 1;
+    if (lifeCounter == 1) {
+      heart01.style.display = "none";
+      skull.style.display = "block";
+    }
+    if (lifeCounter == 2) {
+      heart01.style.display = "none";
+      skull.style.display = "block";
+    }
+    if (lifeCounter == 3) {
+      gameOver();
+    }
+
+  }
+}
+
+//Game over function
+var deathScreen = document.getElementById("game-over")
+function gameOver() {
+  groomShop.style.display = "none";
+  deathScreen.style.display = "block";
+}
+
+//refresh button
+$("#refresh").click(function () {
+  window.location.reload();
+})
+
+//Succsessfully helps the client
+function happyClient() {
+  
+}
