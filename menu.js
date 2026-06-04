@@ -37,11 +37,10 @@ var menuMusic = document.getElementById("menu-music");
 // once you press start it plays theme song
 $("#start").click(function () {
 
-  // play click sound
-  if (startSound) {
-    startSound.currentTime = 0;
+  // play click sound - 
+  if (startSound) {startSound.currentTime = 0;
     startSound.play().catch(function (error) {
-      console.log("Start sound failed:", error);
+      console.log("Start sound failed:", error); // WORKING AFTER 2?
     });
   }
 
@@ -49,8 +48,7 @@ $("#start").click(function () {
   frontShop.style.display = "block";
 
   // background MUSIC (fixed?)
-  if (bgMusic) {
-    bgMusic.currentTime = 0;
+  if (bgMusic) { bgMusic.currentTime = 0;
     bgMusic.play().catch(function (error) {
       console.log("BG music failed:", error);
     });
@@ -463,6 +461,7 @@ function clear(){
 // 2. HOW TO RESET TOOLS AFTER PLAYER SELECTS IT
 // 2. HOW TO MAKE SKULL APPEAR AFTER PLAYER TAKES DAMAGE
 // 3. HOW TO MAKE SURE NO CREATURE GETS REPEATED IN LINE (this takes last priority becuase we don't have enough creatures yet)
+// 4. HOW TO CREATE SEEMLESS DAMAGE SYSTEM THAT ENDS IN END SCREEN
 
 // right now code removed creature from object and front shop line, but creature gets suck in groomShop **This bug takes priority!!!!
 //Also game over screen needs to get touched up in css
