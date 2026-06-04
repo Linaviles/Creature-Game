@@ -195,16 +195,85 @@ window.onclick = function (event) {
 // shop screen / groom shop
 var groomShop = document.getElementById("grooming-shop");
 let currentCreature = null;
+let currentLinePlace = null;
+
 $("#lineCreature01").click(function () {
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature01').html();
   $('#groomCreature').replaceWith(content);
   currentCreature = slotCreatures["01"];
+  currentLinePlace = "lineCreature01";
 });
 
+$("#lineCreature02").click(function () {
+  frontShop.style.display = "none";
+  groomShop.style.display = "block";
+  var content = $('#lineCreature02').html();
+  $('#groomCreature').replaceWith(content);
+  currentCreature = slotCreatures["02"];
+  currentLinePlace = "lineCreature02";
+});
+
+$("#lineCreature03").click(function () {
+  frontShop.style.display = "none";
+  groomShop.style.display = "block";
+  var content = $('#lineCreature03').html();
+  $('#groomCreature').replaceWith(content);
+  currentCreature = slotCreatures["03"];
+  currentLinePlace = "lineCreature03";
+});
+
+$("#lineCreature04").click(function () {
+  frontShop.style.display = "none";
+  groomShop.style.display = "block";
+  var content = $('#lineCreature04').html();
+  $('#groomCreature').replaceWith(content);
+  currentCreature = slotCreatures["04"];
+  currentLinePlace = "lineCreature04";
+});
+
+$("#lineCreature05").click(function () {
+  frontShop.style.display = "none";
+  groomShop.style.display = "block";
+  var content = $('#lineCreature05').html();
+  $('#groomCreature').replaceWith(content);
+  currentCreature = slotCreatures["05"];
+  currentLinePlace = "lineCreature05";
+});
+
+$("#lineCreature06").click(function () {
+  frontShop.style.display = "none";
+  groomShop.style.display = "block";
+  var content = $('#lineCreature06').html();
+  $('#groomCreature').replaceWith(content);
+  currentCreature = slotCreatures["06"];
+  currentLinePlace = "lineCreature06";
+});
+
+$("#lineCreature07").click(function () {
+  frontShop.style.display = "none";
+  groomShop.style.display = "block";
+  var content = $('#lineCreature07').html();
+  $('#groomCreature').replaceWith(content);
+  currentCreature = slotCreatures["07"];
+  currentLinePlace = "lineCreature07";
+});
+
+$("#lineCreature08").click(function () {
+  frontShop.style.display = "none";
+  groomShop.style.display = "block";
+  var content = $('#lineCreature08').html();
+  $('#groomCreature').replaceWith(content);
+  currentCreature = slotCreatures["08"];
+  currentLinePlace = "lineCreature08";
+});
+
+//Drag and drop Function
+let selected = null;
 function dragstart(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
+  
 }
 
 function dragover(ev) {
@@ -214,7 +283,8 @@ function dragover(ev) {
 function drop(ev) {
   ev.preventDefault();
   const data = ev.dataTransfer.getData("text");
-  // ev.target.appendChild(document.getElementById(data)); this line places the tool image inside the groomContainer div and removes the image from the tool box
+  takeDamage(selected);
+  //ev.target.appendChild(document.getElementById(data)); //this line places the tool image inside the groomContainer div and removes the image from the tool box
 }
 
 hairBrush.addEventListener("dragstart", function (e) {
@@ -224,8 +294,9 @@ hairBrush.addEventListener("dragstart", function (e) {
   hB.width = '100';
   var div = document.createElement('div');
   div.appendChild(hB);
-  document.querySelector('body').appendChild(div);
+  document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
+  selected = "brush hair";
 
 }, false);
 
@@ -236,8 +307,9 @@ toothBrush.addEventListener("dragstart", function (e) {
   tB.width = '100';
   var div = document.createElement('div');
   div.appendChild(tB);
-  document.querySelector('body').appendChild(div);
+  document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
+  selected = "brush teeth";
 
 }, false);
 
@@ -248,8 +320,9 @@ nailClippers.addEventListener("dragstart", function (e) {
   nC.width = '100';
   var div = document.createElement('div');
   div.appendChild(nC);
-  document.querySelector('body').appendChild(div);
+  document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
+  selected = "nail trim";
 
 }, false);
 
@@ -260,8 +333,9 @@ nailFile.addEventListener("dragstart", function (e) {
   nF.width = '100';
   var div = document.createElement('div');
   div.appendChild(nF);
-  document.querySelector('body').appendChild(div);
+  document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
+  selected = "nail buff";
 
 }, false);
 
@@ -272,8 +346,9 @@ shower.addEventListener("dragstart", function (e) {
   sH.width = '100';
   var div = document.createElement('div');
   div.appendChild(sH);
-  document.querySelector('body').appendChild(div);
+  document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
+  selected = "wash";
 
 }, false);
 
@@ -284,10 +359,13 @@ scissors.addEventListener("dragstart", function (e) {
   sC.width = '100';
   var div = document.createElement('div');
   div.appendChild(sC);
-  document.querySelector('body').appendChild(div);
+  document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
+  selected = "hair cut";
 
 }, false);
+
+//takeDamage(selected);
 
 //Check if selected tool is the right tool
 function checkCorrectTool(tool) {
@@ -312,22 +390,27 @@ var skull01 = document.getElementById("skull01");
 var skull02 = document.getElementById("skull02");
 
 function takeDamage(check) {
-  if (checkCorrectTool(check)) {
+  let bool_val = checkCorrectTool(check);
+  if (bool_val) {
     //maybe a sound effect + visual effect can go here
     happyClient();
+    console.log("this runs");
   }
   else {
     lifeCounter += 1;
     if (lifeCounter == 1) {
       heart01.style.display = "none";
-      skull.style.display = "block";
+      skull.style.display = "block"; // replaces with skull but it doesn't work yet
+      console.log("took one damage");
     }
     if (lifeCounter == 2) {
-      heart01.style.display = "none";
+      heart01.style.display = "none"; // also this doesnt run yet another bug
       skull.style.display = "block";
+      console.log("took two damage");
     }
-    if (lifeCounter == 3) {
+    if (lifeCounter == 3) { // This does work
       gameOver();
+      console.log("lost the game");
     }
 
   }
@@ -346,6 +429,41 @@ $("#refresh").click(function () {
 })
 
 //Succsessfully helps the client
+var completion = document.getElementById("completion");
 function happyClient() {
-  
+  //button appears to take player back to the line
+  completion.style.display = "block";
 }
+
+$("#clickable").click(function () {
+  groomShop.style.display = "none";
+  frontShop.style.display = "block";
+})
+
+// work in progress in how to clear how everything after one run
+function clear(){
+  //Removes lineCreater from object
+  for (const [key, value] of Object.entries(all_service)) { //This doesn't completley work either
+    if (currentCreature === key ) {
+      delete all_service.key;
+      console.log("this potentially runs");
+    }
+  }
+  //removes lineCreature that has already been treated
+  var delDiv = document.getElementById(currentLinePlace);
+  delDiv.remove();
+
+  selected = null;
+  currentLinePlace = null;
+  currentCreature = null;
+}
+
+//BUGS WE NEED TO FIGURE OUT
+// 1. HOW TO REMOVE CREATURE FROM GROOMING ROOM ONCE TREATED
+// 2. HOW TO RESET TOOLS AFTER PLAYER SELECTS IT
+// 2. HOW TO MAKE SKULL APPEAR AFTER PLAYER TAKES DAMAGE
+// 3. HOW TO MAKE SURE NO CREATURE GETS REPEATED IN LINE (this takes last priority becuase we don't have enough creatures yet)
+
+// right now code removed creature from object and front shop line, but creature gets suck in groomShop **This bug takes priority!!!!
+//Also game over screen needs to get touched up in css
+//

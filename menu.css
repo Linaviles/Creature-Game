@@ -236,6 +236,16 @@ h1 {
     position: relative;
 }
 
+#dropTool img {
+    width:100px;
+}
+
+#completion{
+    display: none;
+    position: relative;
+}
+
+/* For drag and drop function I want the tools to have animation will figure out later today */
 .spin-animation {
  animation: spin 2s linear 1;
 }
