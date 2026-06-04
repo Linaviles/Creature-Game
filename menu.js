@@ -400,12 +400,12 @@ function takeDamage(check) {
     lifeCounter += 1;
     if (lifeCounter == 1) {
       heart01.style.display = "none";
-      skull.style.display = "block"; // replaces with skull but it doesn't work yet
+      skull01.style.display = "block"; // replaces with skull but it doesn't work yet
       console.log("took one damage");
     }
     if (lifeCounter == 2) {
-      heart01.style.display = "none"; // also this doesnt run yet another bug
-      skull.style.display = "block";
+      heart02.style.display = "none"; // also this doesnt run yet another bug
+      skull02.style.display = "block";
       console.log("took two damage");
     }
     if (lifeCounter == 3) { // This does work
