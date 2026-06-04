@@ -39,7 +39,7 @@ body {
     height: 100%;
 }
 
-#game-over{
+#game-over {
     display: none;
     position: relative;
     background-image: url(art/death-screen.png);
@@ -231,27 +231,52 @@ h1 {
     width: 100px;
 }
 
-#skull01, #skull02{
+#skull01,
+#skull02 {
     display: None;
     position: relative;
 }
 
 #dropTool img {
-    width:100px;
+    width: 100px;
 }
 
-#completion{
+#completion {
     display: none;
-    position: relative;
+    position: absolute;
+    top: 550px;
+    left: 600px;
+    z-index: 4;
+}
+
+.return {
+    max-width: 150px;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    padding: 10px;
+    border-radius: 100px;
+    background-color: orange;
+    color: green;
+    font-size: 30px;
+    font-family: "Alata";
+}
+
+.return:hover {
+    color: white
 }
 
 /* For drag and drop function I want the tools to have animation will figure out later today */
 .spin-animation {
- animation: spin 2s linear 1;
+    animation: spin 2s linear 1;
 }
 
 
 @keyframes spin {
- from { transform: rotate(0deg); }
- to { transform: rotate(-360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
 }
