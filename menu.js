@@ -1,7 +1,9 @@
 let message = "<p> </p>" + "<br></br>";
 
 // list of line variables
-let creatures = ["platypus", "jackalope", "pegasus", "poodle", "snake"];
+let creatures = ["platypus", "jackalope", "pegasus", "poodle", "snake", "Hermit crab", "Horse", "Ladybug",
+  "Rattlesnake", "beetle", "Mister Blob", "Tired Snail", "Flouncy Sheep"
+];
 
 let creatureCount = 0;
 
@@ -11,11 +13,13 @@ let lineCreature = creatures[lineNumber];
 
 let lineCount = 0;
 
+let theEnd = 0;
+
 //Dictionary to make sure creatures are saved properly
 let slotCreatures = {};
 let i = 1;
 
-//Dictionary to store creatures and services they need? (thinking about this)
+//Dictionary to store creatures and services they need
 let all_service = {};
 
 //services list
@@ -38,7 +42,8 @@ var menuMusic = document.getElementById("menu-music");
 $("#start").click(function () {
 
   // play click sound - 
-  if (startSound) {startSound.currentTime = 0;
+  if (startSound) {
+    startSound.currentTime = 0;
     startSound.play().catch(function (error) {
       console.log("Start sound failed:", error); // WORKING AFTER 2?
     });
@@ -48,31 +53,20 @@ $("#start").click(function () {
   frontShop.style.display = "block";
 
   // background MUSIC (fixed?)
-  if (bgMusic) { bgMusic.currentTime = 0;
+  if (bgMusic) {
+    bgMusic.currentTime = 0;
     bgMusic.play().catch(function (error) {
       console.log("BG music failed:", error);
     });
   }
 
-  // random creature is called on
-  var counter = setInterval(function () {
-    lineNumber = Math.floor(Math.random() * creatures.length);
-    lineCreature = creatures[lineNumber];
-    lineCount = lineCount + 1;
-
-    if (lineCount == 8) {
-      clearInterval(counter);
-    }
-  }, 5000);
-
   // Line of creatures starts to form
   var lineImage = setInterval(function () {
-    makeImage("platypus");
-    makeImage("jackalope");
-    makeImage("pegasus");
-    makeImage("poodle");
-    makeImage("snake");
 
+    lineNumber = Math.floor(Math.random() * creatures.length);
+    lineCreature = creatures[lineNumber];
+
+    makeImage(lineCreature);
     console.log(lineCreature);
 
     if (lineCount == 8) {
@@ -95,17 +89,17 @@ console.log(lineCreature);
 // create the image
 function makeImage(creatureToMatch) {
 
+  if (Object.values(slotCreatures).includes(creatureToMatch)) return;
+
   if (lineCreature === creatureToMatch) {
-    let slot = i < 9 ? "0" + i : "" + i;
-
+    let slot = i <= 8 ? "0" + i : "" + i;
     slotCreatures[slot] = creatureToMatch;
-
     $("#lineCreature" + slot).prepend(
       "<img class='line' src='art/" + creatureToMatch + ".png'>"
     );
-
     all_service[creatureToMatch] = random_service();
     i++;
+    lineCount++;
   }
 }
 
@@ -271,7 +265,7 @@ $("#lineCreature08").click(function () {
 let selected = null;
 function dragstart(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
-  
+
 }
 
 function dragover(ev) {
@@ -393,16 +387,17 @@ function takeDamage(check) {
     //maybe a sound effect + visual effect can go here
     happyClient();
     console.log("this runs");
+    theEnd++
   }
   else {
     lifeCounter += 1;
     if (lifeCounter == 1) {
       heart01.style.display = "none";
-      skull01.style.display = "block"; // replaces with skull but it doesn't work yet
+      skull01.style.display = "block";
       console.log("took one damage");
     }
     if (lifeCounter == 2) {
-      heart02.style.display = "none"; // also this doesnt run yet another bug
+      heart02.style.display = "none";
       skull02.style.display = "block";
       console.log("took two damage");
     }
@@ -429,40 +424,49 @@ $("#refresh").click(function () {
 //Succsessfully helps the client
 var completion = document.getElementById("completion");
 function happyClient() {
-  //button appears to take player back to the line
   completion.style.display = "block";
 }
 
 $("#clickable").click(function () {
   groomShop.style.display = "none";
   frontShop.style.display = "block";
+  completion.style.display = "none";
+  clear();
 })
 
-// work in progress in how to clear how everything after one run
-function clear(){
-  //Removes lineCreater from object
-  for (const [key, value] of Object.entries(all_service)) { //This doesn't completley work either
-    if (currentCreature === key ) {
-      delete all_service.key;
-      console.log("this potentially runs");
-    }
-  }
-  //removes lineCreature that has already been treated
-  var delDiv = document.getElementById(currentLinePlace);
-  delDiv.remove();
 
-  selected = null;
-  currentLinePlace = null;
-  currentCreature = null;
+function clear() {
+  //Removes lineCreater from object
+    for (const [key, value] of Object.entries(all_service)) { //This doesn't completley work either
+      if (currentCreature === key) {
+        delete all_service[key];
+        console.log("this potentially runs");
+      }
+    }
+    //removes lineCreature that has already been treated
+    var delDiv = document.getElementById(currentLinePlace);
+    delDiv.remove();
+
+    //remove image in groom div
+    var content = document.getElementById("groomContainer");
+    content.innerHTML =  '';
+    content.innerHTML = `<div id="groomCreature"></div> 
+                          
+                          <div id="dropTool"></div>`;
+
+    selected = null;
+    currentLinePlace = null;
+    currentCreature = null;
 }
 
-//BUGS WE NEED TO FIGURE OUT
-// 1. HOW TO REMOVE CREATURE FROM GROOMING ROOM ONCE TREATED
-// 2. HOW TO RESET TOOLS AFTER PLAYER SELECTS IT
-// 2. HOW TO MAKE SKULL APPEAR AFTER PLAYER TAKES DAMAGE
-// 3. HOW TO MAKE SURE NO CREATURE GETS REPEATED IN LINE (this takes last priority becuase we don't have enough creatures yet)
-// 4. HOW TO CREATE SEEMLESS DAMAGE SYSTEM THAT ENDS IN END SCREEN
+/*
+var shiftEnd = document.getElementById("shift-end");
 
-// right now code removed creature from object and front shop line, but creature gets suck in groomShop **This bug takes priority!!!!
-//Also game over screen needs to get touched up in css
-//
+if (theEnd == 8){
+  frontShop.style.display = "none";
+  shiftEnd.style.display = "block";
+}*/
+
+//BUG TO FIX
+//1. It works well in order, but once you pick a creature not in order it breaks I think the checkCorrectTool function 
+//has a glitch, something wrong when iterating through the keys it automatically sends a false

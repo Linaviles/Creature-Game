@@ -50,6 +50,20 @@ body {
 
 }
 
+#shift-end{
+    display: none;
+    position: relative;
+    background-image: url(art/test_final.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#shift-end h1, h2{
+    align-items: center;
+}
+
 .lineContainer {
     display: flex;
     padding-top: 300px;
