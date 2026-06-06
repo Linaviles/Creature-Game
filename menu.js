@@ -164,9 +164,16 @@ var modal = document.getElementById("myModal");
 var credits = document.getElementById("credits");
 var span = document.getElementsByClassName("close")[0];
 
-window.onload = function() {
-    document.getElementById("menu-music").play();
-}
+startingScreen.addEventListener("click", function() {
+
+  // play click sound - 
+  if (menuMusic) {
+    menuMusic.currentTime = 0;
+    menuMusic.play().catch(function (error) {
+      console.log("Menu music failed:", error); // WORKING AFTER 2?
+    });
+  }
+}, { once: true });
 
 credits.onclick = function () {
   modal.style.display = "block";
