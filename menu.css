@@ -56,11 +56,16 @@ body {
     padding-left: 25px;
 }
 
+.lineContainer img:hover {
+    transform: scale(1.15);
+}
+
 #lineCreature {
     z-index: 3;
     top: 20px;
     position: relative;
 }
+
 
 .line {
     margin-right: 25px;
@@ -215,6 +220,11 @@ h1 {
 #tool-placements img {
     position: relative;
     width: 100px;
+}
+
+#tool-placements img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(10px 0 10px rgb(255, 255, 73));
 }
 
 #health-bar {
