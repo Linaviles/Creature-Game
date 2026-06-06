@@ -52,6 +52,10 @@ $("#start").click(function () {
   startingScreen.style.display = "none";
   frontShop.style.display = "block";
 
+  if (menuMusic) {
+    menuMusic.pause();
+  }
+
   // background MUSIC (fixed?)
   if (bgMusic) {
     bgMusic.currentTime = 0;
@@ -160,22 +164,16 @@ var modal = document.getElementById("myModal");
 var credits = document.getElementById("credits");
 var span = document.getElementsByClassName("close")[0];
 
-credits.onclick = function () {
-  if (menuMusic) {
-    menuMusic.currentTime = 0;
-    menuMusic.play().catch(function (error) {
-      console.log("Credits sound failed:", error);
-    });
-  }
+window.onload = function() {
+    document.getElementById("menu-music").play();
+}
 
+credits.onclick = function () {
   modal.style.display = "block";
 };
 
 span.onclick = function () {
   modal.style.display = "none";
-  if (menuMusic) {
-    menuMusic.pause();
-  }
 };
 
 window.onclick = function (event) {
@@ -437,26 +435,26 @@ $("#clickable").click(function () {
 
 function clear() {
   //Removes lineCreater from object
-    for (const [key, value] of Object.entries(all_service)) { //This doesn't completley work either
-      if (currentCreature === key) {
-        delete all_service[key];
-        console.log("this potentially runs");
-      }
+  for (const [key, value] of Object.entries(all_service)) { //This doesn't completley work either
+    if (currentCreature === key) {
+      delete all_service[key];
+      console.log("this potentially runs");
     }
-    //removes lineCreature that has already been treated
-    var delDiv = document.getElementById(currentLinePlace);
-    delDiv.remove();
+  }
+  //removes lineCreature that has already been treated
+  var delDiv = document.getElementById(currentLinePlace);
+  delDiv.remove();
 
-    //remove image in groom div
-    var content = document.getElementById("groomContainer");
-    content.innerHTML =  '';
-    content.innerHTML = `<div id="groomCreature"></div> 
+  //remove image in groom div
+  var content = document.getElementById("groomContainer");
+  content.innerHTML = '';
+  content.innerHTML = `<div id="groomCreature"></div> 
                           
                           <div id="dropTool"></div>`;
 
-    selected = null;
-    currentLinePlace = null;
-    currentCreature = null;
+  selected = null;
+  currentLinePlace = null;
+  currentCreature = null;
 }
 
 /*
