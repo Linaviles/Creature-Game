@@ -42,7 +42,7 @@ body {
 #game-over {
     display: none;
     position: relative;
-    background-image: url(art/death-screen.png);
+    background-image: url(art/celebration_screen.png);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;

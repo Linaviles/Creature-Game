@@ -115,48 +115,72 @@ $("#lineCreature01").hover(
       creature +
       " wants a " + all_service[creature] + " service."
     );
+  },
+  function () {
+    $("#service-box").text("Lets see what the clients want.");
   });
 
 $("#lineCreature02").hover(
   function () {
     let creature = slotCreatures["02"];
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  },
+  function () {
+    $("#service-box").text("Lets see what the clients want.");
   });
 
 $("#lineCreature03").hover(
   function () {
     let creature = slotCreatures["03"];
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  },
+  function () {
+    $("#service-box").text("Lets see what the clients want.");
   });
 
 $("#lineCreature04").hover(
   function () {
     let creature = slotCreatures["04"]
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  },
+  function () {
+    $("#service-box").text("Lets see what the clients want.");
   });
 
 $("#lineCreature05").hover(
   function () {
     let creature = slotCreatures["05"];
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  },
+  function () {
+    $("#service-box").text("Lets see what the clients want.");
   });
 
 $("#lineCreature06").hover(
   function () {
     let creature = slotCreatures["06"];
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  },
+  function () {
+    $("#service-box").text("Lets see what the clients want.");
   });
 
 $("#lineCreature07").hover(
   function () {
     let creature = slotCreatures["07"];
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  },
+  function () {
+    $("#service-box").text("Lets see what the clients want.");
   });
 
 $("#lineCreature08").hover(
   function () {
     let creature = slotCreatures["08"];
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
+  },
+  function () {
+    $("#service-box").text("Lets see what the clients want.");
   });
 
 // modal
@@ -393,6 +417,10 @@ function takeDamage(check) {
     happyClient();
     console.log("this runs");
     theEnd++
+
+    if (theEnd == 8) {
+      theEnding();
+    }
   }
   else {
     lifeCounter += 1;
@@ -439,7 +467,6 @@ $("#clickable").click(function () {
   clear();
 })
 
-
 function clear() {
   //Removes lineCreater from object
   for (const [key, value] of Object.entries(all_service)) { //This doesn't completley work either
@@ -464,14 +491,13 @@ function clear() {
   currentCreature = null;
 }
 
-/*
+//The end
 var shiftEnd = document.getElementById("shift-end");
-
-if (theEnd == 8){
-  frontShop.style.display = "none";
+function theEnding() {
+  groomShop.style.display = "none";
   shiftEnd.style.display = "block";
-}*/
+}
 
 //BUG TO FIX
-//1. It works well in order, but once you pick a creature not in order it breaks I think the checkCorrectTool function 
-//has a glitch, something wrong when iterating through the keys it automatically sends a false
+/*1. It works well in order, but once you pick a creature not in order it breaks I think the checkCorrectTool function 
+has a glitch, something wrong when iterating through the keys it automatically sends a false */
