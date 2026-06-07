@@ -41,26 +41,60 @@ body {
 
 #game-over {
     display: none;
+    position: absolute;
+    background-image: url(art/death-screen.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%
+}
+
+#endScreen h1 {
+    color: white;
+    margin-top: 150px;
+    margin-left: 525px
+}
+
+#endScreen h2 {
+    color: #ffffff;
+    margin-left: 500px
+}
+
+#endButton {
+    display: none;
+    position: absolute;
+    z-index: 4;
+}
+
+#refresh {
+    max-width: 150px;
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 650px;
+    padding: 10px;
+    border-radius: 100px;
+    background-color: orange;
+    color: green;
+    font-size: 30px;
+    font-family: "Alata";
+}
+
+#refresh:hover {
+    color: white
+}
+
+#shift-end {
+    display: none;
     position: relative;
     background-image: url(art/celebration_screen.png);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
     height: 100%;
-
 }
 
-#shift-end{
-    display: none;
-    position: relative;
-    background-image: url(art/test_final.jpeg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100%;
-}
-
-#shift-end h1, h2{
+#shift-end h1,
+h2 {
     align-items: center;
 }
 

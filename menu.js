@@ -1,8 +1,8 @@
 let message = "<p> </p>" + "<br></br>";
 
 // list of line variables
-let creatures = ["platypus", "jackalope", "pegasus", "poodle", "snake", "Hermit crab", "Horse", "Ladybug",
-  "Rattlesnake", "beetle", "Mister Blob", "Tired Snail", "Flouncy Sheep"
+let creatures = ["Platypus", "Jackalope", "Pegasus", "Poodle", "Snake", "Hermit Crab", "Horse", "Ladybug",
+  "Rattlesnake", "Beetle", "Mister Blob", "Tired Snail", "Flouncy Sheep"
 ];
 
 let creatureCount = 0;
@@ -443,10 +443,12 @@ function takeDamage(check) {
 }
 
 //Game over function
+var death = document.getElementById("deathButton");
 var deathScreen = document.getElementById("game-over")
 function gameOver() {
   groomShop.style.display = "none";
   deathScreen.style.display = "block";
+  death.style.display = "block";
 }
 
 //refresh button
