@@ -32,14 +32,31 @@ let tools = ["hairBrush", "nailClippers", "nailFile", "shower", "toothbrush", "s
 var frontShop = document.getElementById("front-shop");
 var start = document.getElementById("start");
 var startingScreen = document.getElementById("starting-screen");
+var except = document.querySelector('#start');
 
 // audio stuff
 var bgMusic = document.getElementById("bg-music");
 var startSound = document.getElementById("start-sound");
 var menuMusic = document.getElementById("menu-music");
 
+// once you click anywhere on the menu screen, it plays the menu music
+startingScreen.addEventListener("click", function () {
+
+  // play click sound - 
+  if (!except.contains(event.target)) {
+    menuMusic.currentTime = 0;
+    menuMusic.play().catch(function (error) {
+      console.log("Menu music failed:", error);
+    });
+  }
+}, { once: true });
+
 // once you press start it plays theme song
 $("#start").click(function () {
+
+  if (menuMusic) {
+    menuMusic.pause();
+  }
 
   // play click sound - 
   if (startSound) {
@@ -51,10 +68,6 @@ $("#start").click(function () {
 
   startingScreen.style.display = "none";
   frontShop.style.display = "block";
-
-  if (menuMusic) {
-    menuMusic.pause();
-  }
 
   // background MUSIC (fixed?)
   if (bgMusic) {
@@ -112,8 +125,7 @@ $("#lineCreature01").hover(
   function () {
     let creature = slotCreatures["01"];
     $("#service-box").text(
-      creature +
-      " wants a " + all_service[creature] + " service."
+      creature + " wants a " + all_service[creature] + " service."
     );
   },
   function () {
@@ -187,17 +199,6 @@ $("#lineCreature08").hover(
 var modal = document.getElementById("myModal");
 var credits = document.getElementById("credits");
 var span = document.getElementsByClassName("close")[0];
-
-startingScreen.addEventListener("click", function() {
-
-  // play click sound - 
-  if (menuMusic) {
-    menuMusic.currentTime = 0;
-    menuMusic.play().catch(function (error) {
-      console.log("Menu music failed:", error); // WORKING AFTER 2?
-    });
-  }
-}, { once: true });
 
 credits.onclick = function () {
   modal.style.display = "block";
@@ -443,7 +444,7 @@ function takeDamage(check) {
 }
 
 //Game over function
-var death = document.getElementById("deathButton");
+var death = document.getElementById("badButton");
 var deathScreen = document.getElementById("game-over")
 function gameOver() {
   groomShop.style.display = "none";
@@ -457,10 +458,17 @@ $("#refresh").click(function () {
 })
 
 //Succsessfully helps the client
+var win = document.getElementById("goodButton");
 var completion = document.getElementById("completion");
 function happyClient() {
   completion.style.display = "block";
+  win.style.display = "block";
 }
+
+//replay button
+$("#replay").click(function () {
+  window.location.reload();
+})
 
 $("#clickable").click(function () {
   groomShop.style.display = "none";

@@ -21,7 +21,7 @@ body {
 
 #front-shop {
     display: none;
-    position: relative;
+    position: absolute;
     background-image: url(art/store_front.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -49,15 +49,28 @@ body {
     height: 100%
 }
 
-#endScreen h1 {
+#badEnd h1 {
+    max-width: 700px;
+    gap: 30px;
+    text-align: center;
+    padding: 30px;
+    border-radius: 100px;
+    background-color: black;
     color: white;
     margin-top: 150px;
-    margin-left: 525px
+    margin-left: 340px
 }
 
-#endScreen h2 {
+#badEnd h2 {
+    max-width: 600px;
+    gap: 30px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 100px;
+    background-color: black;
     color: #ffffff;
-    margin-left: 500px
+    margin-left: 410px;
+    font-family: "Alata";
 }
 
 #endButton {
@@ -85,7 +98,7 @@ body {
 
 #shift-end {
     display: none;
-    position: relative;
+    position: absolute;
     background-image: url(art/celebration_screen.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -93,9 +106,45 @@ body {
     height: 100%;
 }
 
-#shift-end h1,
-h2 {
-    align-items: center;
+#goodEnd h1 {
+    max-width: 700px;
+    gap: 30px;
+    text-align: center;
+    padding: 30px;
+    border-radius: 100px;
+    background-color: white;
+    color: green;
+    margin-top: 150px;
+    margin-left: 340px
+}
+
+#goodEnd h2 {
+    max-width: 600px;
+    gap: 30px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 100px;
+    background-color: white;
+    color: green;
+    margin-left: 410px;
+    font-family: "Alata";
+}
+
+#replay {
+    max-width: 150px;
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 650px;
+    padding: 10px;
+    border-radius: 100px;
+    background-color: orange;
+    color: green;
+    font-size: 30px;
+    font-family: "Alata";
+}
+
+#replay:hover {
+    color: white
 }
 
 .lineContainer {
@@ -220,16 +269,19 @@ h1 {
 #service-box {
     position: absolute;
     top: 75%;
-    left: 35%;
+    left: 30%;
     background-image: url(art/placeholder.jpeg);
     border-width: 10px;
     border-color: cadetblue;
-    font-size: xx-large;
-    padding-left: 50px;
+    font-size: 30px;
+    padding-left: 140px;
+    padding-right: 25px;
     padding-top: 50px;
-    width: 400px;
+    width: 450px;
     height: 100px;
     text-shadow: 2px 2px #ffffff;
+    font-family: "Alata";
+    text-align: left;
 }
 
 .groom {
