@@ -2,7 +2,7 @@ let message = "<p> </p>" + "<br></br>";
 
 // list of line variables
 let creatures = ["Platypus", "Jackalope", "Pegasus", "Poodle", "Snake", "Hermit Crab", "Horse", "Ladybug",
-  "Rattlesnake", "Beetle", "Mister Blob", "Tired Snail", "Flouncy Sheep"
+  "Rattlesnake", "Beetle", "Mister Blob", "Tired Snail", "Flouncy Sheep", "Ram", "Jellyfish", "Owl"
 ];
 
 let creatureCount = 0;

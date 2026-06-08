@@ -383,10 +383,10 @@ h1 {
 
 @keyframes spin {
     from {
-        transform: rotate(0deg);
+        transform: translateX(0) rotate(0deg);
     }
 
     to {
-        transform: rotate(-360deg);
+        transform: translateX(-350px) rotate(-360deg);
     }
 }
