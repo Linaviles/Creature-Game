@@ -34,12 +34,19 @@ var start = document.getElementById("start");
 var startingScreen = document.getElementById("starting-screen");
 var except = document.querySelector('#start');
 
-// audio stuff
+// audio stuff - songs in game
 var bgMusic = document.getElementById("bg-music");
 var startSound = document.getElementById("start-sound");
 var menuMusic = document.getElementById("menu-music");
+var deathSound = document.getElementById("death-sound");
+var creatureSound = document.getElementById("creature-sound");
 
-// once you click anywhere on the menu screen, it plays the menu music
+function playCreatureSound() {
+    creatureSound.currentTime = 0;
+    creatureSound.play();
+}
+
+// once you click anywhere on the credits button on the menu screen, it plays the menu music
 startingScreen.addEventListener("click", function () {
 
   // play click sound - 
@@ -61,10 +68,8 @@ $("#start").click(function () {
   // play click sound - 
   if (startSound) {
     startSound.currentTime = 0;
-    startSound.play().catch(function (error) {
-      console.log("Start sound failed:", error); // WORKING AFTER 2?
-    });
-  }
+    startSound.play(); // works!
+}
 
   startingScreen.style.display = "none";
   frontShop.style.display = "block";
@@ -72,10 +77,8 @@ $("#start").click(function () {
   // background MUSIC (fixed?)
   if (bgMusic) {
     bgMusic.currentTime = 0;
-    bgMusic.play().catch(function (error) {
-      console.log("BG music failed:", error);
-    });
-  }
+    bgMusic.play();
+}
 
   // Line of creatures starts to form
   var lineImage = setInterval(function () {
@@ -220,6 +223,7 @@ let currentCreature = null;
 let currentLinePlace = null;
 
 $("#lineCreature01").click(function () {
+  playCreatureSound();
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature01').html();
@@ -229,6 +233,7 @@ $("#lineCreature01").click(function () {
 });
 
 $("#lineCreature02").click(function () {
+  playCreatureSound();
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature02').html();
@@ -238,6 +243,7 @@ $("#lineCreature02").click(function () {
 });
 
 $("#lineCreature03").click(function () {
+  playCreatureSound();
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature03').html();
@@ -247,6 +253,7 @@ $("#lineCreature03").click(function () {
 });
 
 $("#lineCreature04").click(function () {
+  playCreatureSound();
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature04').html();
@@ -256,6 +263,7 @@ $("#lineCreature04").click(function () {
 });
 
 $("#lineCreature05").click(function () {
+  playCreatureSound();
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature05').html();
@@ -265,6 +273,7 @@ $("#lineCreature05").click(function () {
 });
 
 $("#lineCreature06").click(function () {
+  playCreatureSound();
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature06').html();
@@ -274,6 +283,7 @@ $("#lineCreature06").click(function () {
 });
 
 $("#lineCreature07").click(function () {
+  playCreatureSound();
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature07').html();
@@ -283,6 +293,7 @@ $("#lineCreature07").click(function () {
 });
 
 $("#lineCreature08").click(function () {
+  playCreatureSound();
   frontShop.style.display = "none";
   groomShop.style.display = "block";
   var content = $('#lineCreature08').html();
@@ -447,6 +458,16 @@ function takeDamage(check) {
 var death = document.getElementById("badButton");
 var deathScreen = document.getElementById("game-over")
 function gameOver() {
+   if (bgMusic) {
+    bgMusic.pause();
+  }
+
+  if (deathSound) {
+    deathSound.currentTime = 0;
+    deathSound.play().catch(function(error) {
+      console.log("Death sound failed:", error);
+    });
+  }
   groomShop.style.display = "none";
   deathScreen.style.display = "block";
   death.style.display = "block";
