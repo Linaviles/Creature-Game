@@ -41,12 +41,21 @@ var menuMusic = document.getElementById("menu-music");
 var deathSound = document.getElementById("death-sound");
 var creatureSound = document.getElementById("creature-sound");
 var toolselect = document.getElementById("tool-select");
+var bellnoise = document.getElementById("bell-noise");
 
 function playToolSelect() {
     toolselect.currentTime = 0;
     toolselect.volume = 1.0;
     toolselect.play();
-    console.log(toolselect);
+    console.log("playing toolselect", toolselect);
+}
+
+function playBellNoise() {
+    bellnoise.currentTime = 0;
+    bellnoise.volume = 1.0;
+    console.log("playing bell", bellnoise);
+    bellnoise.play();
+    
 }
 
 function playCreatureSound() {
@@ -117,7 +126,7 @@ $("#start").click(function () {
 
     makeImage(lineCreature);
     console.log(lineCreature);
-
+    playBellNoise();
     if (lineCount == 8) {
       clearInterval(lineImage);
     }
