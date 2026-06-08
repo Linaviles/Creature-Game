@@ -40,6 +40,14 @@ var startSound = document.getElementById("start-sound");
 var menuMusic = document.getElementById("menu-music");
 var deathSound = document.getElementById("death-sound");
 var creatureSound = document.getElementById("creature-sound");
+var toolselect = document.getElementById("tool-select");
+
+function playToolSelect() {
+    toolselect.currentTime = 0;
+    toolselect.volume = 1.0;
+    toolselect.play();
+    console.log(toolselect);
+}
 
 function playCreatureSound() {
     creatureSound.currentTime = 0;
@@ -332,6 +340,7 @@ hairBrush.addEventListener("dragstart", function (e) {
   document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
   selected = "brush hair";
+  playToolSelect();
 
 }, false);
 
@@ -345,6 +354,7 @@ toothBrush.addEventListener("dragstart", function (e) {
   document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
   selected = "brush teeth";
+  playToolSelect();
 
 }, false);
 
@@ -358,6 +368,7 @@ nailClippers.addEventListener("dragstart", function (e) {
   document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
   selected = "nail trim";
+  playToolSelect();
 
 }, false);
 
@@ -371,6 +382,7 @@ nailFile.addEventListener("dragstart", function (e) {
   document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
   selected = "nail buff";
+  playToolSelect();
 
 }, false);
 
@@ -384,6 +396,7 @@ shower.addEventListener("dragstart", function (e) {
   document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
   selected = "wash";
+  playToolSelect();
 
 }, false);
 
@@ -397,8 +410,10 @@ scissors.addEventListener("dragstart", function (e) {
   document.getElementById('dropTool').appendChild(div).classList.toggle('spin-animation');
   e.dataTransfer.setDragImage(div, -10, -10)
   selected = "hair cut";
+  playToolSelect();
 
 }, false);
+
 
 //takeDamage(selected);
 
