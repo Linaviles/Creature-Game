@@ -74,7 +74,7 @@ $("#start").click(function () {
   startingScreen.style.display = "none";
   frontShop.style.display = "block";
 
-  // background MUSIC (fixed?)
+  // background MUSIC (fixed!) - used AI to figure out what was wrong with function in regards to connecting to html. Problem turned out to be variable naming - bgMusic was renamed on my computer.
   if (bgMusic) {
     bgMusic.currentTime = 0;
     bgMusic.play();
