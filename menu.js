@@ -46,10 +46,10 @@ function playCreatureSound() {
     creatureSound.play();
 }
 
-// once you click anywhere on the credits button on the menu screen, it plays the menu music
+// once you click anywhere on the menu screen, it plays the menu music
 startingScreen.addEventListener("click", function () {
 
-  // play click sound - 
+  // play menu music
   if (!except.contains(event.target)) {
     menuMusic.currentTime = 0;
     menuMusic.play().catch(function (error) {
@@ -58,6 +58,26 @@ startingScreen.addEventListener("click", function () {
   }
 }, { once: true });
 
+// credits window variables
+var modal = document.getElementById("myModal");
+var credits = document.getElementById("credits");
+var span = document.getElementsByClassName("close")[0];
+
+// once you click credits it opens a modal
+credits.onclick = function () {
+  modal.style.display = "block";
+};
+
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
 // once you press start it plays theme song
 $("#start").click(function () {
 
@@ -65,12 +85,13 @@ $("#start").click(function () {
     menuMusic.pause();
   }
 
-  // play click sound - 
+  // play click sound
   if (startSound) {
     startSound.currentTime = 0;
     startSound.play(); // works!
 }
 
+// switches from starting screen to front shop
   startingScreen.style.display = "none";
   frontShop.style.display = "block";
 
@@ -198,26 +219,7 @@ $("#lineCreature08").hover(
     $("#service-box").text("Lets see what the clients want.");
   });
 
-// modal
-var modal = document.getElementById("myModal");
-var credits = document.getElementById("credits");
-var span = document.getElementsByClassName("close")[0];
-
-credits.onclick = function () {
-  modal.style.display = "block";
-};
-
-span.onclick = function () {
-  modal.style.display = "none";
-};
-
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-};
-
-// shop screen / groom shop
+// switches from shop screen to groom shop
 var groomShop = document.getElementById("grooming-shop");
 let currentCreature = null;
 let currentLinePlace = null;
@@ -302,7 +304,7 @@ $("#lineCreature08").click(function () {
   currentLinePlace = "lineCreature08";
 });
 
-//Drag and drop Function
+//Drag and drop function
 let selected = null;
 function dragstart(ev) {
   ev.dataTransfer.setData("text", ev.target.id);
