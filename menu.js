@@ -126,10 +126,10 @@ $("#start").click(function () {
 
     makeImage(lineCreature);
     console.log(lineCreature);
-    playBellNoise();
     if (lineCount == 8) {
       clearInterval(lineImage);
     }
+    playBellNoise();
   }, 5000);
 
 });
