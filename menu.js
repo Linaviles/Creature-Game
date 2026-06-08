@@ -17,7 +17,7 @@ let theEnd = 0;
 
 //Dictionary to make sure creatures are saved properly
 let slotCreatures = {};
-let i = 1;
+let i = 1; //counter for slotCreature
 
 //Dictionary to store creatures and services they need
 let all_service = {};
@@ -341,7 +341,7 @@ hairBrush.addEventListener("dragstart", function (e) {
   e.dataTransfer.setDragImage(div, -10, -10)
   selected = "brush hair";
   playToolSelect();
-
+  
 }, false);
 
 toothBrush.addEventListener("dragstart", function (e) {
