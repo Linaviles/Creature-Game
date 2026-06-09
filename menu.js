@@ -43,6 +43,7 @@ var deathSound = document.getElementById("death-sound");
 var creatureSound = document.getElementById("creature-sound");
 var toolselect = document.getElementById("tool-select");
 var bellnoise = document.getElementById("bell-noise");
+var hurrahNoise = document.getElementById("hurrah");
 
 function playToolSelect() {
   toolselect.currentTime = 0;
@@ -62,6 +63,12 @@ function playBellNoise() {
 function playCreatureSound() {
   creatureSound.currentTime = 0;
   creatureSound.play();
+}
+
+function playHurrah(){
+  hurrahNoise.currentTime = 0;
+  hurrahNoise.volume = 1.0;
+  hurrahNoise.play();
 }
 
 // once you click anywhere on the menu screen, it plays the menu music
@@ -116,6 +123,7 @@ $("#start").click(function () {
   // background MUSIC (fixed!) - used AI to figure out what was wrong with function in regards to connecting to html. Problem turned out to be variable naming - bgMusic was renamed on my computer.
   if (bgMusic) {
     bgMusic.currentTime = 0;
+    bgMusic.volume = 1.0;
     bgMusic.play();
   }
 
@@ -554,4 +562,5 @@ var shiftEnd = document.getElementById("shift-end");
 function theEnding() {
   groomShop.style.display = "none";
   shiftEnd.style.display = "block";
+  playHurrah();
 }
