@@ -138,7 +138,7 @@ $("#start").click(function () {
     if (lineCount == 8) {
       clearInterval(lineImage);
     }
-  }, 5000);
+  }, 7000);
 
 });
 
