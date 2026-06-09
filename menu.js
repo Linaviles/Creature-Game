@@ -129,7 +129,6 @@ $("#start").click(function () {
     if (lineCount == 8) {
       clearInterval(lineImage);
     }
-    playBellNoise();
   }, 5000);
 
 });
@@ -158,6 +157,7 @@ function makeImage(creatureToMatch) {
     all_service[creatureToMatch] = random_service();
     i++;
     lineCount++;
+     playBellNoise();
   }
 }
 
