@@ -45,23 +45,23 @@ var toolselect = document.getElementById("tool-select");
 var bellnoise = document.getElementById("bell-noise");
 
 function playToolSelect() {
-    toolselect.currentTime = 0;
-    toolselect.volume = 1.0;
-    toolselect.play();
-    console.log("playing toolselect", toolselect);
+  toolselect.currentTime = 0;
+  toolselect.volume = 1.0;
+  toolselect.play();
+  console.log("playing toolselect", toolselect);
 }
 
 function playBellNoise() {
-    bellnoise.currentTime = 0;
-    bellnoise.volume = 1.0;
-    console.log("playing bell", bellnoise);
-    bellnoise.play();
-    
+  bellnoise.currentTime = 0;
+  bellnoise.volume = 1.0;
+  console.log("playing bell", bellnoise);
+  bellnoise.play();
+
 }
 
 function playCreatureSound() {
-    creatureSound.currentTime = 0;
-    creatureSound.play();
+  creatureSound.currentTime = 0;
+  creatureSound.play();
 }
 
 // once you click anywhere on the menu screen, it plays the menu music
@@ -107,9 +107,9 @@ $("#start").click(function () {
   if (startSound) {
     startSound.currentTime = 0;
     startSound.play(); // works!
-}
+  }
 
-// switches from starting screen to front shop
+  // switches from starting screen to front shop
   startingScreen.style.display = "none";
   frontShop.style.display = "block";
 
@@ -117,7 +117,7 @@ $("#start").click(function () {
   if (bgMusic) {
     bgMusic.currentTime = 0;
     bgMusic.play();
-}
+  }
 
   // Line of creatures starts to form
   var lineImage = setInterval(function () {
@@ -158,7 +158,7 @@ function makeImage(creatureToMatch) {
     all_service[creatureToMatch] = random_service();
     i++;
     lineCount++;
-     playBellNoise();
+    playBellNoise();
   }
 }
 
@@ -171,7 +171,7 @@ $("#lineCreature01").hover(
     );
   },
   function () {
-    $("#service-box").text("Lets see what the clients want.");
+    $("#service-box").text("Lets see what the client wants.");
   });
 
 $("#lineCreature02").hover(
@@ -180,7 +180,7 @@ $("#lineCreature02").hover(
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
   },
   function () {
-    $("#service-box").text("Lets see what the clients want.");
+    $("#service-box").text("Lets see what the client wants.");
   });
 
 $("#lineCreature03").hover(
@@ -189,7 +189,7 @@ $("#lineCreature03").hover(
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
   },
   function () {
-    $("#service-box").text("Lets see what the clients want.");
+    $("#service-box").text("Lets see what the client wants.");
   });
 
 $("#lineCreature04").hover(
@@ -198,7 +198,7 @@ $("#lineCreature04").hover(
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
   },
   function () {
-    $("#service-box").text("Lets see what the clients want.");
+    $("#service-box").text("Lets see what the client wants.");
   });
 
 $("#lineCreature05").hover(
@@ -207,7 +207,7 @@ $("#lineCreature05").hover(
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
   },
   function () {
-    $("#service-box").text("Lets see what the clients want.");
+    $("#service-box").text("Lets see what the client wants.");
   });
 
 $("#lineCreature06").hover(
@@ -216,7 +216,7 @@ $("#lineCreature06").hover(
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
   },
   function () {
-    $("#service-box").text("Lets see what the clients want.");
+    $("#service-box").text("Lets see what the client wants.");
   });
 
 $("#lineCreature07").hover(
@@ -225,7 +225,7 @@ $("#lineCreature07").hover(
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
   },
   function () {
-    $("#service-box").text("Lets see what the clients want.");
+    $("#service-box").text("Lets see what the client wants.");
   });
 
 $("#lineCreature08").hover(
@@ -234,7 +234,7 @@ $("#lineCreature08").hover(
     $("#service-box").text(creature + " wants a " + all_service[creature] + " service.");
   },
   function () {
-    $("#service-box").text("Lets see what the clients want.");
+    $("#service-box").text("Lets see what the client wants.");
   });
 
 // switches from shop screen to groom shop
@@ -351,7 +351,7 @@ hairBrush.addEventListener("dragstart", function (e) {
   e.dataTransfer.setDragImage(div, -10, -10)
   selected = "brush hair";
   playToolSelect();
-  
+
 }, false);
 
 toothBrush.addEventListener("dragstart", function (e) {
@@ -432,12 +432,12 @@ function checkCorrectTool(tool) {
   for (const [key, value] of Object.entries(all_service)) {
     let clean_string = tool.replaceAll(' ', '');
     let clean_string01 = value.replaceAll(' ', '');
-    if (currentCreature === key) {
-      return clean_string.toLowerCase() === clean_string01.toLowerCase();
-    }
 
-    return false;
+      if (currentCreature === key) {
+        return clean_string.toLowerCase() === clean_string01.toLowerCase();
+      }
   }
+  return false;
 }
 
 //take damage if tool incorrect
@@ -485,13 +485,13 @@ function takeDamage(check) {
 var death = document.getElementById("badButton");
 var deathScreen = document.getElementById("game-over")
 function gameOver() {
-   if (bgMusic) {
+  if (bgMusic) {
     bgMusic.pause();
   }
 
   if (deathSound) {
     deathSound.currentTime = 0;
-    deathSound.play().catch(function(error) {
+    deathSound.play().catch(function (error) {
       console.log("Death sound failed:", error);
     });
   }
@@ -527,7 +527,7 @@ $("#clickable").click(function () {
 
 function clear() {
   //Removes lineCreater from object
-  for (const [key, value] of Object.entries(all_service)) { //This doesn't completley work either
+  for (const [key, value] of Object.entries(all_service)) { 
     if (currentCreature === key) {
       delete all_service[key];
       console.log("this potentially runs");
@@ -555,7 +555,3 @@ function theEnding() {
   groomShop.style.display = "none";
   shiftEnd.style.display = "block";
 }
-
-//BUG TO FIX
-/*1. It works well in order, but once you pick a creature not in order it breaks I think the checkCorrectTool function 
-has a glitch, something wrong when iterating through the keys it automatically sends a false */
